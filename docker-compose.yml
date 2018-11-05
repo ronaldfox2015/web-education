@@ -1,0 +1,10 @@
+version: '2'
+services:
+
+  nginx:
+      image: jguillermo/alpine-php:nginx
+      volumes:
+        - ./app:/var/www/html
+        - ./log/:/var/log/nginx/
+      ports:
+        - 80:80

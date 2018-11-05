@@ -1,0 +1,12 @@
+{
+  "name": "jguillermo/alpine-php-alpine",
+  "authors": [
+    {
+      "name": "Jose Guillermo",
+      "email": "jose.guillermo@outlook.com"
+    }
+  ],
+  "require": {
+    "zendframework/zend-text": "^2.6"
+  }
+}
