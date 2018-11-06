@@ -4,18 +4,18 @@ BUILD_TIMESTAMP ?= `date +%Y%m%d`
 VERSION			:= nginx
 USER         := ronaldfox2020
 TAG_DEV			:= $(USER)/orbis-training-docker:$(VERSION)
-IMAGE := php-base
+IMAGE := nginx
 USER_DOCKER := ronaldfox2020
 PASWORD_DOCKER := ramirez2015 
 
 start:
-	docker run -d -p 80:80  -v "$(PWD)/app/web:/var/www/html"  jguillermo/alpine-php:nginx
+	docker run -d -p 80:80 --name my-apache-php-app  -v "$(PWD)/app/web:/var/www/html" php:7.2-apache;
 
 login: ## login de docker: make login
 	@docker login
 
 build: ## construccion de la imagen: make build, make build  IMAGE=php-nginx VERSION=nginx 
-	docker build -f docker/$(IMAGE)/Dockerfile -t $(TAG_DEV) docker/$(IMAGE)/;
+	docker build -f docker/$(IMAGE)/Dockerfile -t $(TAG_DEV) docker/$(IMAGE);
 
 create-network:
 	docker network create $(NAME)

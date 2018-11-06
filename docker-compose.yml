@@ -1,10 +1,15 @@
 version: '2'
 services:
-
-  nginx:
-      image: jguillermo/alpine-php:nginx
-      volumes:
-        - ./app:/var/www/html
-        - ./log/:/var/log/nginx/
+  web:
+      image: nginx:latest
       ports:
-        - 80:80
+          - "80:80"
+      volumes:
+          - ./code:/code
+          - ./docker/nginx/site.conf:/etc/nginx/conf.d/site.conf
+      links:
+        - php
+  php:
+      image: php:7.2-fpm
+      volumes:
+        - ./code:/code
